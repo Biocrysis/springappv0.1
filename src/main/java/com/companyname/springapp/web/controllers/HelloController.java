@@ -23,7 +23,8 @@ public class HelloController {
 
     @RequestMapping(value="/hello.htm")
     public ModelAndView handleRequest() {
-        logger.info("Returning hello view");
-        return new ModelAndView("hello.jsp");
+    	String now = (new Date()).toString();
+        logger.info("Returning hello view whith " + now);
+        return new ModelAndView("WEB-INF/views/hello.jsp","now", now);
     }
 }

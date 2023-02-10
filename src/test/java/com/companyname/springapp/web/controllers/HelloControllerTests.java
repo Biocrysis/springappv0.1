@@ -25,8 +25,10 @@ public class HelloControllerTests {
     @Test
     public void testHandleRequestView() {	
         ModelAndView modelAndView = controller.handleRequest();		
-        assertEquals("WE-INF/views/hello.jsp", modelAndView.getViewName());
+        assertEquals("WEB-INF/views/hello.jsp", modelAndView.getViewName());
         assertNotNull(modelAndView.getModel());
+        String nowValue = (String) modelAndView.getModel().get("now");
+        assertNotNull(nowValue);
         
     }
 }
