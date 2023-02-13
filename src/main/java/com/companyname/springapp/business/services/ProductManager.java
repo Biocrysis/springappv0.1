@@ -5,9 +5,9 @@ import java.util.List;
 /**
  * Interfaz que nos ayudara a gestionar la clase producto.
  * la cual contiene metodos para incrementar el precio y recuperar los productos.
- *@author uriel
- *@since 13/02/2023
- *@version 1.0
+ * @author uriel
+ * @since 13/02/2023
+ * @version 1.0
  */
 
 import com.companyname.springapp.business.entities.Product;
