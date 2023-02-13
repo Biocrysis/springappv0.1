@@ -1,5 +1,17 @@
 package com.companyname.springapp.web.controllers;
 
+/** 
+ * <p>
+ * Clase para hacer pruebas, que se encargan de comprobor los errores de los mododulos
+ * o componentes de la apliacacion y que estos mismos funcionen correctamente.
+ * se utiliza el marco de pruebas JUnit para realizar estas pruebas.
+ * </p>
+ * 
+ * @author uriel
+ * @since 10/02/2023
+ * @version 1.0
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -14,19 +26,19 @@ import com.companyname.springapp.business.SpringappBusinessConfig;
 import com.companyname.springapp.web.SpringappWebConfig;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {SpringappBusinessConfig.class, SpringappWebConfig.class})
+@ContextConfiguration(classes = { SpringappBusinessConfig.class, SpringappWebConfig.class })
 @WebAppConfiguration
 public class HelloControllerTests {
 
-    @Autowired
-    private HelloController controller;
+	@Autowired
+	private HelloController controller;
 
-    @Test
-    public void testHandleRequestView() {	
-        ModelAndView modelAndView = controller.handleRequest();		
-        assertEquals("hello", modelAndView.getViewName());
-        assertNotNull(modelAndView.getModel());
-        String nowValue = (String) modelAndView.getModel().get("now");
-        assertNotNull(nowValue);
-    }
+	@Test
+	public void testHandleRequestView() {
+		ModelAndView modelAndView = controller.handleRequest();
+		assertEquals("hello", modelAndView.getViewName());
+		assertNotNull(modelAndView.getModel());
+		String nowValue = (String) modelAndView.getModel().get("now");
+		assertNotNull(nowValue);
+	}
 }

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * <p>clase para mapear url y retornar vistas</p>
+ * <p>
+ * clase para mapear url y retornar vistas
+ * </p>
  * 
  * @author uriel
  * @since 10/02/2023
@@ -19,12 +21,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HelloController {
 
-    protected final Log logger = LogFactory.getLog(getClass());
+	protected final Log logger = LogFactory.getLog(getClass());
 
-    @RequestMapping(value="/hello.htm")
-    public ModelAndView handleRequest() {
-    	String now = (new Date()).toString();
-        logger.info("Returning hello view whith " + now);
-        return new ModelAndView("hello","now", now);
-    }
+	@RequestMapping(value = "/hello.htm")
+	public ModelAndView handleRequest() {
+		String now = (new Date()).toString();
+		logger.info("Returning hello view whith " + now);
+		return new ModelAndView("hello", "now", now);
+	}
 }
