@@ -35,7 +35,11 @@ public class SimpleProductManager implements ProductManager {
 		}
 
 	}
-
+	
+	/**
+	 * 
+	 * @param products Lista que sirve para salvar los productos
+	 */
 	public void setProducts(List<Product> products) {
 		// throw new UnsupportedOperationException();
 		this.products = products;
