@@ -28,10 +28,11 @@ public class InventoryController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	
-	
+
 	//inyeccion de la dependencia product manager
 	@Autowired
 	private ProductManager productManager;
+	
 
 	@RequestMapping(value = "/hello.htm")
 	public ModelAndView handleRequest() {

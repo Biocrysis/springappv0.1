@@ -7,6 +7,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.context.support.ResourceBundleMessageSource;
 
 /**
  * 
@@ -24,15 +25,32 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  *          </p>
  */
 
+
 @Configuration
 @ComponentScan
 @EnableWebMvc
 public class SpringappWebConfig {
-
+	
+	
+	/**
+	 * 
+	 * @return bean 'messageSource' que nos permitirá recuperar mensajes desde la ubicación 'Messages.properties
+	 */
+	@Bean
+	    public ResourceBundleMessageSource messageSource() {
+	        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+	        messageSource.setBasename("Messages");
+	        return messageSource;
+	    }
+/**
+ * 
+ * @return internalResourceViewResolver regresa un mapeo básico entre una vista y una localización simplemente configurando un 
+ * prefijo y un sufijo en un bean
+ */
 	@Bean
 	public ViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
-		internalResourceViewResolver.setPrefix("/WEB-INF/views/"); // buscara en la carpeta views
+		internalResourceViewResolver.setPrefix("/WEB-INF/views/"); // localizacion
 		internalResourceViewResolver.setSuffix(".jsp"); // buscara todas las vistas que terminen en .jsp
 		return internalResourceViewResolver;
 
