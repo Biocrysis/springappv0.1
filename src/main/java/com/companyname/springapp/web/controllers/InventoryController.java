@@ -33,16 +33,22 @@ public class InventoryController {
 	@Autowired
 	private ProductManager productManager;
 	
-
+/**
+ * 
+ * @return ModelAndView("hello","model", myModel); regresa el jsp, nombre del modelo , modelo
+ */
 	@RequestMapping(value = "/hello.htm")
 	public ModelAndView handleRequest() {
 		String now = (new Date()).toString();
+		//dato en consola
 		logger.info("Returning hello view whith " + now);
 		//return new ModelAndView("hello", "now", now);
 		
 		Map<String,Object> myModel=  new HashMap<String, Object>();
 		myModel.put("now ", now);
 		myModel.put("products" , productManager.getProducts());
+		//regresa el jsp de la vista, nombre del modelo , modelo
+		//la cual se puede recuperar en la vista html
 		
 		return new ModelAndView("hello","model", myModel);
 	}
