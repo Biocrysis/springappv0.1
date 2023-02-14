@@ -30,8 +30,8 @@ public class Product {
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("Description"+description+";");
-		buffer.append("Price"+price+";");
+		buffer.append("Description: "+description+";");
+		buffer.append("Price: "+price+";");
 		return buffer.toString();
 	}
 	
