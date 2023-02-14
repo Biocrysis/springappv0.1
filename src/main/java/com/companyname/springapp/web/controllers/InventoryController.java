@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-public class HelloController {
+public class InventoryController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
