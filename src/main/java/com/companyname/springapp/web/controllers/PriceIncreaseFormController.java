@@ -16,7 +16,7 @@ import com.companyname.springapp.business.services.PriceIncrease;
 import com.companyname.springapp.business.services.ProductManager;
 
 /**
- * Clase para mapear url para aunmentar el precio de un producto
+ * Clase para mapear url  y controlador de formulario que valida los datos introducidos
  * atraves del  formulario
  * @author uriel
  * @since 14/02/2023
@@ -35,12 +35,7 @@ public class PriceIncreaseFormController {
     @Autowired
     private ProductManager productManager;
     
-    /**
-     * 
-     * @param priceIncrease
-     * @param result
-     * @return
-     */
+
     
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@Valid PriceIncrease priceIncrease , BindingResult result) {

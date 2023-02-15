@@ -7,7 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /** Clase JavaBean.
- *  La cual sers el objeto que el formulario rellene
+ *  La cual sera el objeto que el formulario rellene
  * y desde el que, nuestra lógica de negocio extraerá el porcentaje de incremento que queremos aplicar a los precios
  * @author uriel
  *

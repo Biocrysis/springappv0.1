@@ -16,6 +16,8 @@ import com.companyname.springapp.business.services.ProductManager;
 /**
  * <p>
  * clase para mapear url y retornar vistas
+ *  asi tambien le hemos dado una referencia a ProductManager 
+ *  por lo que ahora podemos recuperar una lista de productos para mostrar
  * </p>
  * 
  * @author uriel
@@ -45,7 +47,7 @@ public class InventoryController {
 		//return new ModelAndView("hello", "now", now);
 		
 		Map<String,Object> myModel=  new HashMap<String, Object>();
-		myModel.put("now ", now);
+		myModel.put("now", now);
 		myModel.put("products" , productManager.getProducts());
 		//regresa el jsp de la vista, nombre del modelo , modelo
 		//la cual se puede recuperar en la vista html
