@@ -18,7 +18,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
  *          clase que define el contexto de la capa web
  *          </p>
  *          <p>
- *          @Bean nos ayudara a separar la vista del contralador para que no
+ *          Bean nos ayudara a separar la vista del contralador para que no
  *          genere dependencia con ayuda de InternalResourceViewResolver quese
  *          utiliza para resolver la vista de recursos internos que genera urls
  *          con un patron predefino dentro la misma aplicacion.

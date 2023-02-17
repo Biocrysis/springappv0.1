@@ -66,7 +66,7 @@ public class SimpleProductManagerTests{
 	}
 	// TEST PARA COMPORAR SI LOS OBTENER PRODUCTOS Y OBTENER SUS DESCRIPCION Y PRODUCTOS.
 	/**
-	 * @param testGetProducts() metodo que verifica que la cantidad de productos se igual 
+	 *  testGetProducts() metodo que verifica que la cantidad de productos se igual 
 	 */
 	@Test
 	public void testGetProducts() {

@@ -1,4 +1,10 @@
+D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\business\services\ProductManager.java
 D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\web\SpringappWebConfig.java
-D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\web\controllers\HelloController.java
+D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\business\services\SimpleProductManager.java
 D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\SpringappWebApplicationInitializer.java
+D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\business\services\PriceIncrease.java
+D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\business\entities\Product.java
 D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\business\SpringappBusinessConfig.java
+D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\web\controllers\InventoryController.java
+D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\web\controllers\PriceIncreaseFormController.java
+D:\Personal\Documentos\SPRING PROJECT\springapp\src\main\java\com\companyname\springapp\business\repositories\ProductRepository.java
