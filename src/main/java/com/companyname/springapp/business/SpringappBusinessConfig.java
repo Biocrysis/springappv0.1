@@ -1,58 +1,92 @@
 package com.companyname.springapp.business;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Properties;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import com.companyname.springapp.business.entities.Product;
-import com.companyname.springapp.business.services.ProductManager;
-import com.companyname.springapp.business.services.SimpleProductManager;
 
 /**
+ * Archivo que contiene la configuración del contexto de la aplicación <br>
+ * Se modfico para que contenga todos los beans relacionados con el acceso a la
+ * base de datos.
  * 
  * @author uriel
  * @since 10/02/2023
  * @version 1.0
  */
 
-
 @Configuration
 @ComponentScan
-public class SpringappBusinessConfig{
-	
-	//si no inyectamos el product manager antes, no podemos realizar el test de 
-	// de inventorycontrollertest
-	
-	private static Double CHAIR_PRICE = new Double(20.50);
-    private static String CHAIR_DESCRIPTION = "Chair";
+@PropertySource("classpath:application.properties")
+@EnableJpaRepositories("com.companyname.springapp.business.repositories")
+public class SpringappBusinessConfig {
+	@Autowired
+	private Environment env;
 
-    private static String TABLE_DESCRIPTION = "Table";
-    private static Double TABLE_PRICE = new Double(150.10);
-    
-    
-    @Bean
-    public ProductManager loadProductManager() {
-    	SimpleProductManager simpleProductManager = new SimpleProductManager();
-    	//creacion de lista para guardar un arreglo de productos [precio,detalle]
-    	List<Product> products = new ArrayList<Product>();
-    	// creacion del producto para rellenarlo
-    	Product product = new Product();
-    	product.setDescription(CHAIR_DESCRIPTION);
-    	product.setPrice(CHAIR_PRICE);
-    	//se agrega el producto al arraylist
-    	products.add(product);
-    	
-    	product= new Product();
-    	product.setDescription(TABLE_DESCRIPTION);
-    	product.setPrice(TABLE_PRICE);
-    	products.add(product);
-    	
-    	// se mandan el arreglo de productos al product manager
-    	simpleProductManager.setProducts(products);
-    	return simpleProductManager;
-    }
-    
+	/**
+	 * Metodo cuyos valores de configuración serán tomados de un archivo de
+	 * propiedades en tiempo de ejecución. <br>
+	 * los cules suelen estar en src/main/java/resources/application.properties.
+	 * 
+	 * @return dataSource Regresa los datos de BD.
+	 */
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(env.getProperty("db.driver"));
+		dataSource.setUrl(env.getProperty("db.url"));
+		dataSource.setUsername(env.getProperty("db.username"));
+		dataSource.setPassword(env.getProperty("db.password"));
+		return dataSource;
+	}
+
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+
+		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+		emf.setDataSource(dataSource());
+		emf.setPackagesToScan(Product.class.getPackage().getName());
+
+		HibernateJpaVendorAdapter hibernateJpa = new HibernateJpaVendorAdapter();
+		hibernateJpa.setDatabase(Database.MYSQL);
+		hibernateJpa.setDatabasePlatform(env.getProperty("hibernate.dialect"));
+		hibernateJpa.setGenerateDdl(env.getProperty("hibernate.generateDdl", Boolean.class));
+		hibernateJpa.setShowSql(env.getProperty("hibernate.show_sql", Boolean.class));
+		emf.setJpaVendorAdapter(hibernateJpa);
+
+		Properties jpaProperties = new Properties();
+		jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+		jpaProperties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+		jpaProperties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+		emf.setJpaProperties(jpaProperties);
+
+		return emf;
+	}
+
+	@Bean
+	public JpaTransactionManager transactionManager() {
+		JpaTransactionManager txnMgr = new JpaTransactionManager();
+		 txnMgr.setEntityManagerFactory(entityManagerFactory().getObject());
+		
+		 
+		 
+		 
+		 //txnMgr.setEntityManagerFactory(entityManagerFactory().getObject());
+		return txnMgr;
+	}
+
 }

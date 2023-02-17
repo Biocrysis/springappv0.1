@@ -30,7 +30,7 @@ public class Product {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 
 	private String description;
 	private Double price;
