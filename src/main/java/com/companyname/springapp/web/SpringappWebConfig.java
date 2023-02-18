@@ -25,28 +25,29 @@ import org.springframework.context.support.ResourceBundleMessageSource;
  *          </p>
  */
 
-
 @Configuration
 @ComponentScan
 @EnableWebMvc
 public class SpringappWebConfig {
-	
-	
+
 	/**
 	 * 
-	 * @return bean 'messageSource' que nos permitirá recuperar mensajes desde la ubicación 'Messages.properties
+	 * @return bean 'messageSource' que nos permitirá recuperar mensajes desde la
+	 *         ubicación 'Messages.properties
 	 */
 	@Bean
-	    public ResourceBundleMessageSource messageSource() {
-	        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-	        messageSource.setBasename("Messages");
-	        return messageSource;
-	    }
-/**
- * 
- * @return internalResourceViewResolver regresa un mapeo básico entre una vista y una localización simplemente configurando un 
- * prefijo y un sufijo en un bean
- */
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasename("Messages");
+		return messageSource;
+	}
+
+	/**
+	 * 
+	 * @return internalResourceViewResolver regresa un mapeo básico entre una vista
+	 *         y una localización simplemente configurando un prefijo y un sufijo en
+	 *         un bean
+	 */
 	@Bean
 	public ViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
